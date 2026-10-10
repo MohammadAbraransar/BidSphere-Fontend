@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Dice5, History, ShieldCheck } from 'lucide-react';
 import { Client } from '@stomp/stompjs';
 import SockJS from 'sockjs-client';
+import { API_BASE_URL, WS_BASE_URL } from '../config';
 
 type Round = { id: number; pick: 'SMALL' | 'BIG'; roll: number; result: 'SMALL' | 'BIG'; won: boolean; stake: number };
 
@@ -22,11 +23,11 @@ export const BigSmallGame = () => {
     if (!token || !username) return;
 
     // Fetch the authoritative balance and this user's persisted game history.
-    fetch('http://localhost:8081/api/auth/me', { headers: { Authorization: `Bearer ${token}` } })
+    fetch(`${API_BASE_URL}/auth/me`, { headers: { Authorization: `Bearer ${token}` } })
       .then(res => { if (!res.ok) throw new Error('Could not load account balance.'); return res.json(); })
       .then(data => setCredits(Number(data.walletBalance || 0)))
       .catch(console.error);
-    fetch('http://localhost:8081/api/games/my-entries', { headers: { Authorization: `Bearer ${token}` } })
+    fetch(`${API_BASE_URL}/games/my-entries`, { headers: { Authorization: `Bearer ${token}` } })
       .then(res => { if (!res.ok) throw new Error('Could not load game history.'); return res.json(); })
       .then((entries: any[]) => setRounds(entries.map(entry => ({
         id: Number(entry.id), pick: entry.selection, roll: Number(entry.resultNumber || 0),
@@ -36,7 +37,7 @@ export const BigSmallGame = () => {
 
     const client = new Client({
       connectHeaders: { Authorization: `Bearer ${token}` },
-      webSocketFactory: () => new SockJS('http://localhost:8081/ws'),
+      webSocketFactory: () => new SockJS(WS_BASE_URL),
       reconnectDelay: 5000,
     });
 

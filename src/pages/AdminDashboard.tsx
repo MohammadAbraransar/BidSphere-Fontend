@@ -1,9 +1,10 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
 import { Activity, Gavel, LayoutDashboard, RefreshCw, ShieldCheck, Trash2, Users, WalletCards, AlertTriangle, FileText, Gamepad2 } from 'lucide-react';
+import { API_BASE_URL } from '../config';
 import './AdminDashboard.css';
 
-const API_URL = 'http://localhost:8081/api/admin';
+const API_URL = `${API_BASE_URL}/admin`;
 type UserRow = { id:number; username:string; email:string; walletBalance:number; role:string; kycStatus:string; level:number };
 type AuctionRow = { id:number; title:string; description:string; startingPrice:number; currentPrice:number; endTime:string; active:boolean; creatorName:string; status?:string };
 type BidRow = { id:number; auctionId:number; auctionTitle:string; bidderName:string; amount:number; bidTime:string };

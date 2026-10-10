@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Landmark, ArrowUpRight, ArrowDownLeft, Clock, CheckCircle2, XCircle, AlertCircle, RefreshCw } from 'lucide-react';
+import { API_BASE_URL } from '../config';
 import './Wallet.css';
 
-const API = 'http://localhost:8081/api';
+const API = API_BASE_URL;
 
 type Transaction = {
   id: number; amount: number; type: string; status: string;

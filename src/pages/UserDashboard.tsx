@@ -2,11 +2,12 @@ import React, { useEffect, useMemo, useState } from 'react';
 import axios from 'axios';
 import { Activity, ArrowRight, Bell, Clock3, Gamepad2, Gavel, ShieldCheck, Wallet } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { BACKEND_URL } from '../config';
 
 type Item = { id: number; title: string; currentPrice: number; endTime: string; active: boolean; imageUrl?: string };
 type Profile = { username: string; email: string; walletBalance: number; level: number; xp: number; kycStatus: string };
 type Transaction = {id:number;type:string;referenceId:number;amount:number;status:string;timestamp:string;description:string};
-const API = 'http://localhost:8081';
+const API = BACKEND_URL;
 const money = (n: number) => new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 2 }).format(Number(n || 0));
 
 export const UserDashboard = () => {

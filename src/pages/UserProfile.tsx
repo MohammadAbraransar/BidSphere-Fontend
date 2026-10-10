@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { UserRound, Phone, Mail, ShieldCheck, Landmark, Save, RefreshCw, BadgeCheck, AlertCircle, LockKeyhole } from 'lucide-react';
+import { API_BASE_URL } from '../config';
 import './UserProfile.css';
 
-const API = 'http://localhost:8081/api';
+const API = API_BASE_URL;
 type Profile = {
   username: string; email: string; phoneNumber?: string; fullName?: string;
   dateOfBirth?: string; postalAddress?: string; bankAccountName?: string;

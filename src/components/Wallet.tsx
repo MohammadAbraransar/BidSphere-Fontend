@@ -3,9 +3,10 @@ import { loadStripe } from '@stripe/stripe-js';
 import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import axios from 'axios';
 import { Wallet as WalletIcon, ArrowDownToLine, ArrowUpFromLine, History, X, AlertCircle } from 'lucide-react';
+import { API_BASE_URL } from '../config';
 import './Wallet.css';
 
-const API = 'http://localhost:8081/api';
+const API = API_BASE_URL;
 const publishableKey = import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY as string | undefined;
 const stripePromise = publishableKey && publishableKey.startsWith('pk_') ? loadStripe(publishableKey) : null;
 type Tx = {id:number;type:string;amount:number;status:string;timestamp:string;description?:string};

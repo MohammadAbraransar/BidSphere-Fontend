@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { LogIn, UserPlus } from 'lucide-react';
+import { API_BASE_URL } from '../config';
 import './Login.css';
 
 interface LoginProps {
   onLoginSuccess: (token: string, username: string, role: string) => void;
 }
 
-const API_AUTH_URL = 'http://localhost:8081/api/auth';
+const API_AUTH_URL = `${API_BASE_URL}/auth`;
 
 export const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
   const [isRegister, setIsRegister] = useState(false);

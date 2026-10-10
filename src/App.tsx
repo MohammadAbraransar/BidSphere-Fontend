@@ -20,10 +20,11 @@ import { UserProfile } from './pages/UserProfile';
 import { UserDashboard } from './pages/UserDashboard';
 import { AuctionMakers } from './pages/AuctionMakers';
 import { BigSmallGame } from './pages/BigSmallGame';
+import { API_BASE_URL, WS_BASE_URL } from './config';
 import './index.css';
 
-const API_URL = 'http://localhost:8081/api/auctions';
-const WS_URL = 'http://localhost:8081/ws';
+const API_URL = `${API_BASE_URL}/auctions`;
+const WS_URL = WS_BASE_URL;
 
 const normalizeRole = (value: string | null | undefined) => {
   const role = (value || '').trim().toUpperCase();
@@ -82,7 +83,7 @@ function App() {
   useEffect(() => {
     if (!token) { setAuthReady(true); return; }
     let active = true;
-    axios.get('http://localhost:8081/api/auth/me', { headers: { Authorization: `Bearer ${token}` } })
+    axios.get(`${API_BASE_URL}/auth/me`, { headers: { Authorization: `Bearer ${token}` } })
       .then(response => {
         if (!active) return;
         const actualRole = normalizeRole(response.data?.role) || 'ROLE_USER';
