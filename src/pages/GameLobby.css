@@ -1,0 +1,143 @@
+.game-lobby {
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+}
+
+.category-section {
+    margin-bottom: 4rem;
+}
+
+.category-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--border-color);
+    color: var(--text-primary);
+    display: inline-block;
+    font-weight: 800;
+}
+
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 3rem;
+    width: 100%;
+}
+
+.game-card {
+    border-radius: 1.5rem;
+    overflow: hidden;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+    border: 1px solid var(--border-color);
+    background: var(--card-bg);
+    box-shadow: var(--shadow);
+    position: relative;
+}
+
+.game-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg), 0 0 0 2px var(--accent-primary);
+    z-index: 10;
+}
+
+.game-image {
+    height: 220px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    transition: transform 0.5s ease;
+}
+
+.game-card:hover .game-image {
+    transform: scale(1.05);
+}
+
+.game-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.05), rgba(0,0,0,0.5));
+    display: flex;
+    padding: 1rem;
+}
+
+.live-badge {
+    background: var(--danger);
+    color: white;
+    padding: 0.35rem 0.85rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    height: max-content;
+    box-shadow: 0 4px 10px rgba(239, 68, 68, 0.4);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.5); }
+    70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+.uno-bg { background-image: url('https://images.unsplash.com/photo-1605336142751-01646df022eb?auto=format&fit=crop&q=80&w=800'); }
+.pool-bg { background-image: url('https://images.unsplash.com/photo-1599557876274-ce49fc61a998?auto=format&fit=crop&q=80&w=800'); }
+.carroms-bg { background-image: url('https://images.unsplash.com/photo-1553481187-be93c21490a9?auto=format&fit=crop&q=80&w=800'); }
+.ludo-bg { background-image: url('https://images.unsplash.com/photo-1610992383183-b7b5fbe8717d?auto=format&fit=crop&q=80&w=800'); }
+.rugby-bg { background-image: url('https://images.unsplash.com/photo-1543886574-884d630d8291?auto=format&fit=crop&q=80&w=800'); }
+.chess-bg { background-image: url('https://images.unsplash.com/photo-1529699211952-734e80c4d42b?auto=format&fit=crop&q=80&w=800'); }
+
+.game-info {
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    background: var(--card-bg);
+}
+
+.game-info h2 {
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.game-info p {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+}
+
+.wager-btn {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.wager-slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 8px;
+    background: var(--border-color);
+    border-radius: 5px;
+    outline: none;
+    margin: 20px 0;
+}
+
+.wager-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--accent-primary);
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.1s;
+}
+
+.wager-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.15);
+}
